@@ -102,6 +102,26 @@ function addEventListeners() {
     .addEventListener("click", () => {
       document.querySelector("[data-settings-overlay]").open = false;
     });
+
+  // Open the search overlay when the search icon in the header is clicked
+  document
+    .querySelector("[data-header-search]")
+    .addEventListener("click", () => {
+      document.querySelector("[data-search-overlay]").open = true;
+      document.querySelector("[data-search-title]").focus(); // Focus on the search input
+    });
+
+  // Open the settings overlay when the settings icon in the header is clicked
+  document
+    .querySelector("[data-header-settings]")
+    .addEventListener("click", () => {
+      document.querySelector("[data-settings-overlay]").open = true;
+    });
+
+  // Close the book detail overlay when the close button is clicked
+  document.querySelector("[data-list-close]").addEventListener("click", () => {
+    document.querySelector("[data-list-active]").open = false;
+  });
 }
 
 /*import { books, authors, genres, BOOKS_PER_PAGE } from './data.js'
