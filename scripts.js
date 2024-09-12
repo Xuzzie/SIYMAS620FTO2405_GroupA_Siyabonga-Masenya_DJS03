@@ -36,7 +36,7 @@ function createBookElement({ author, id, image, title }) {
       `;
   return element; // Return the button element
 }
-
+//This is somthing you need remember : "DocumentFragment" is a lightweight, invisible container that you can use to group multiple DOM elements before inserting them into the actual document. It’s often used to improve performance when updating or appending multiple elements to the DOM.
 function renderBookList(books, container) {
   const fragment = document.createDocumentFragment(); // Create a document fragment for efficient DOM updates
   for (const book of books) {
