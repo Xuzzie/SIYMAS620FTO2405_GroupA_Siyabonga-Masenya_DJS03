@@ -60,12 +60,12 @@ function setupTheme() {
   const prefersDarkScheme =
     window.matchMedia &&
     window.matchMedia("(prefers-color-scheme: dark)").matches; // Check if user prefers dark mode
-  const theme = prefersDarkScheme ? "night" : "day"; // Determine theme based on user preference
+  const theme = prefersDarkScheme ? "night" : "day";
   document.querySelector("[data-settings-theme]").value = theme; // Set the theme in the settings
-  const darkColor = prefersDarkScheme ? "255, 255, 255" : "10, 10, 20"; // Define dark color for CSS
-  const lightColor = prefersDarkScheme ? "10, 10, 20" : "255, 255, 255"; // Define light color for CSS
-  document.documentElement.style.setProperty("--color-dark", darkColor); // Apply dark color to CSS variable
-  document.documentElement.style.setProperty("--color-light", lightColor); // Apply light color to CSS variable
+  const darkColor = prefersDarkScheme ? "255, 255, 255" : "10, 10, 20";
+  const lightColor = prefersDarkScheme ? "10, 10, 20" : "255, 255, 255";
+  document.documentElement.style.setProperty("--color-dark", darkColor);
+  document.documentElement.style.setProperty("--color-light", lightColor);
 }
 
 /**
@@ -84,6 +84,24 @@ function updateShowMoreButton() {
             remainingBooks > 0 ? remainingBooks : 0
           })</span>
       `;
+}
+
+//for full transparancy  i did use chatgpt in this section heavily to get this right mainly due to time concerns
+
+function addEventListeners() {
+  // Close the search overlay when the cancel button is clicked
+  document
+    .querySelector("[data-search-cancel]")
+    .addEventListener("click", () => {
+      document.querySelector("[data-search-overlay]").open = false;
+    });
+
+  // Close the settings overlay when the cancel button is clicked
+  document
+    .querySelector("[data-settings-cancel]")
+    .addEventListener("click", () => {
+      document.querySelector("[data-settings-overlay]").open = false;
+    });
 }
 
 /*import { books, authors, genres, BOOKS_PER_PAGE } from './data.js'
