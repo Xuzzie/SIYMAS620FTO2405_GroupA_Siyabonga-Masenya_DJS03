@@ -54,6 +54,37 @@ function createDropdownOptions(options, firstOptionText) {
 
   return fragment; // Return the completed fragment
 }
+// Sets up the theme based on the user's preference for dark mode or light mode.For clarity i had to use chapt to understand a few concepts such as Matchmedia
+//window.matchMedia() This method is used to check if the user's device or browser matches certain conditions, like screen width, orientation, or in this case, a preference for dark or light themes.
+function setupTheme() {
+  const prefersDarkScheme =
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches; // Check if user prefers dark mode
+  const theme = prefersDarkScheme ? "night" : "day"; // Determine theme based on user preference
+  document.querySelector("[data-settings-theme]").value = theme; // Set the theme in the settings
+  const darkColor = prefersDarkScheme ? "255, 255, 255" : "10, 10, 20"; // Define dark color for CSS
+  const lightColor = prefersDarkScheme ? "10, 10, 20" : "255, 255, 255"; // Define light color for CSS
+  document.documentElement.style.setProperty("--color-dark", darkColor); // Apply dark color to CSS variable
+  document.documentElement.style.setProperty("--color-light", lightColor); // Apply light color to CSS variable
+}
+
+/**
+ * Updates the "Show more" button based on the number of remaining books.
+ */
+function updateShowMoreButton() {
+  const showMoreButton = document.querySelector("[data-list-button]");
+  const remainingBooks = matches.length - page * BOOKS_PER_PAGE; // Calculate how many books are left
+  showMoreButton.innerText = `Show more (${remainingBooks})`; // Update button text
+  showMoreButton.disabled = remainingBooks <= 0; // Disable button if no more books
+
+  // Update button HTML to show remaining books count
+  showMoreButton.innerHTML = `
+          <span>Show more</span>
+          <span class="list__remaining"> (${
+            remainingBooks > 0 ? remainingBooks : 0
+          })</span>
+      `;
+}
 
 /*import { books, authors, genres, BOOKS_PER_PAGE } from './data.js'
 
