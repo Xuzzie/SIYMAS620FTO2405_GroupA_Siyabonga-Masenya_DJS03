@@ -1,4 +1,16 @@
-import { books, authors, genres, BOOKS_PER_PAGE } from './data.js'
+//I had to rewrite the code because I had issues following the original code
+// This import brings in data from  The data.js file
+
+import { books, authors, genres, BOOKS_PER_PAGE } from "./data.js";
+
+// Created an object `library` that contains arrays and objects  that have just been imported
+const library = {
+  books,
+  authors,
+  genres,
+};
+
+/*import { books, authors, genres, BOOKS_PER_PAGE } from './data.js'
 
 let page = 1;
 let matches = books
@@ -233,4 +245,4 @@ document.querySelector('[data-list-items]').addEventListener('click', (event) =>
         document.querySelector('[data-list-subtitle]').innerText = `${authors[active.author]} (${new Date(active.published).getFullYear()})`
         document.querySelector('[data-list-description]').innerText = active.description
     }
-})
+})*/
