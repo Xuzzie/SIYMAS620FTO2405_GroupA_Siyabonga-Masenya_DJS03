@@ -44,6 +44,16 @@ function renderBookList(books, container) {
   }
   container.appendChild(fragment); // Append the fragment to the container
 }
+//This function ill help create a dropdown menu
+function createDropdownOptions(options, firstOptionText) {
+  const fragment = document.createDocumentFragment(); // Create a document fragment for efficient DOM updates
+  const firstElement = document.createElement("option"); // Create the first option element
+  firstElement.value = "any"; // Set the value for the default "any" option
+  firstElement.innerText = firstOptionText; // Set the display text
+  fragment.appendChild(firstElement); // Append the default option to the fragment
+
+  return fragment; // Return the completed fragment
+}
 
 /*import { books, authors, genres, BOOKS_PER_PAGE } from './data.js'
 
